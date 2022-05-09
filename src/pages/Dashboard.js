@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import Quiz from "../components/Quiz";
 import { useNavigate } from "react-router-dom";
 import QuizNameContext from "../helper/QuizNameContext";
+
 import LoadingSpin from "react-loading-spin";
+
+
 function Dashboard() {
   const { data,loading } = useContext(QuizNameContext);
+  
   const navigate = useNavigate()
 
   const handleIkuti = (id) =>{
@@ -37,7 +41,7 @@ function Dashboard() {
       <div className=" pt-24 container right-0 inset-0">
         <div className="w-full border h-full flex justify-center items-center rounded">
           <div className="grid grid-cols-3 w-full h-full">
-            <div className="border">profile user</div>
+            <div className="border">profile</div>
             <div className="col-span-2 border  rounded">
               <div className="grid grid-cols-3 gap-4 p-4">
                 {data?.miniproject_quizName.map((items,index) => {

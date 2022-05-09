@@ -2,11 +2,13 @@ import {Navigate,Outlet} from'react-router-dom'
 
 
 
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
  const AdminProtectRoute = ({ children }) => {
     
-    const isauth = true
+  const auth = cookies.get('auth2')
 
-    if (!isauth) {
+    if (!auth) {
       return <Navigate to="/login" replace />;
     }
   

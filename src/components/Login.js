@@ -1,32 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { gql, useQuery, useLazyQuery } from "@apollo/client";
+import React, {  useEffect,useContext } from "react";
+import UserContext from "../helper/UserContext";
 import { useNavigate } from "react-router-dom";
 import LoadingSpin from "react-loading-spin";
 import Cookies from "universal-cookie";
 import img2 from '../images/img2.jpg' 
-
 import { BsPeopleFill } from "react-icons/bs";
 
-const GetAuth = gql`
-  query MyQuery($_eq: String, $_eq1: String) {
-    miniproject_auth(
-      where: { name: { _eq: $_eq1 }, password: { _eq: $_eq } }
-      limit: 1
-    ) {
-      id
-      level
-      name
-      password
-    }
-  }
-`;
+
 
 function Login() {
+  const { data,loading , handleName,
+    handlePassword,
+    handleSubmit } = useContext(UserContext);
   const navigate = useNavigate();
   const cookies = new Cookies();
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [getdata, { data, loading, error }] = useLazyQuery(GetAuth);
+ 
 
   useEffect(() => {
     if (
@@ -35,7 +23,7 @@ function Login() {
     ) {
       console.log(data?.miniproject_auth[0].level);
       cookies.set("auth", true, { path: "/" });
-      return navigate("/dashboard");
+      return navigate("/dashboard"); 
     }
     if (
       data?.miniproject_auth.length === 1 &&
@@ -47,23 +35,7 @@ function Login() {
     }
   }, [data]);
 
-  const handleName = (e) => {
-    const value = e.target.value;
-    setName(value);
-  };
-  const handlePassword = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-  };
-
-  const handleSubmit = () => {
-    getdata({
-      variables: {
-        _eq: name,
-        _eq1: password,
-      },
-    });
-  };
+ 
 
   if (loading) {
     return (
