@@ -68,7 +68,7 @@ function AdminDashboard() {
   }
 
   return (
-    <div className="h-screen w-full py-12">
+    <div className="min-h-screen max-h-full w-full py-12">
       {/* <AddQuiz /> */}
 
       <div className="px-24">
@@ -121,7 +121,7 @@ function AdminDashboard() {
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                               {index + 1}
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td class="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                               {items.name}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

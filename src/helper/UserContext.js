@@ -1,6 +1,7 @@
 import { gql, useQuery, useLazyQuery } from "@apollo/client";
-import { createContext, useState } from "react";
-
+import { createContext, useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 const GetAuth = gql`
   query MyQuery($_eq: String, $_eq1: String) {
     miniproject_auth(
@@ -22,6 +23,12 @@ export function UserContextProvider ({ children }) {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [getdata, { data, loading, error }] = useLazyQuery(GetAuth);
+    const navigate = useNavigate();
+    const cookies = new Cookies();
+
+    
+    
+
 
     const handleName = (e) => {
       const value = e.target.value;
@@ -41,14 +48,34 @@ export function UserContextProvider ({ children }) {
       });
     };
 
+    useEffect(() => {
+      if (
+        data?.miniproject_auth.length === 1 &&
+        data?.miniproject_auth[0].level === "user"
+      ) {
+        console.log(data?.miniproject_auth[0].name);
+        cookies.set("auth", true, { path: "/" });
+        return navigate("/dashboard"); 
+      }
+      if (
+        data?.miniproject_auth.length === 1 &&
+        data?.miniproject_auth[0].level === "admin"
+      ) {
+        console.log(data?.miniproject_auth[0].level);
+        cookies.set("auth2", true, { path: "/" });
+        return navigate("/admindashboard");
+      }
+    }, [data]);
+
     const value = {
       data,
       loading,
       handleName,
       handlePassword,
       handleSubmit,
-      name
+      
     };
+   
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
 

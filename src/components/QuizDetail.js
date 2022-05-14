@@ -26,7 +26,7 @@ function QuizDetail() {
       title: 'Apakah anda sudah yakin ?',
       showCancelButton: true,
       cancelButtonText: 'batal',
-      confirmButtonText: 'simpan',
+      confirmButtonText: 'selesai',
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -57,7 +57,7 @@ function QuizDetail() {
           </div>
         </div>
       ) : (
-        <div className="container pt-24  justify-center flex justify-items-center items-center">
+        <div className="container py-24  justify-center flex justify-items-center items-center">
           <div className="border rounded w-full  ">
           <div className="ml-4 font-bold text-lg ">
               {data?.miniproject_quizName[id].name}

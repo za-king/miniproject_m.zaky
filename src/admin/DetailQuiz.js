@@ -14,13 +14,21 @@ function DetailQuiz() {
     result,
   } = useContext(QuizNameContext);
   return (
-    <div>
-      {data?.miniproject_quizName[id].name}
+    <div className=" py-12 container flex min-h-screen max-h-full  justify-center justify-items-center">
+      <div className="py-24 w-full h-full border">
+        <div className="ml-4  font-bold text-lg ">
+        {data?.miniproject_quizName[id].name}
+        </div>
+      
       <div>
         {data?.miniproject_quizName[id].questionsId.map((item1) => {
           return (
             <div>
+              <div  className="ml-4 py-4 font-bold text-lg ">
               {item1.questionText}
+
+              </div>
+            
               <div>
                 {item1.answerOptions.map((item2) => {
                   return (
@@ -34,6 +42,8 @@ function DetailQuiz() {
           );
         })}
       </div>
+      </div>
+      
       <div></div>
     </div>
   );

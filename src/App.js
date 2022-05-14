@@ -9,6 +9,7 @@ import { QuizNameContextProvider } from "./helper/QuizNameContext";
 import ProtectRouter from "./protectrouter/ProtectRouter";
 import AdminProtectRoute from "./protectrouter/AdminProtectRoute";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
 import QuizDetail from "./components/QuizDetail";
@@ -25,7 +26,7 @@ function App() {
             <>
               <Route element={<ProtectRouter />}>
                 <Route path="/dashboard" element={<Dashboard />} />
-               
+                <Route path="/quizdetail/:id" element={<QuizDetail />} />
                 <Route path="/" element={<HomePage />} />
                 <Route path="result/:id" element={<Result />} />
               </Route>
@@ -35,7 +36,7 @@ function App() {
               <Route path="/addquiz" element={<AddQuiz />} />
                 <Route path="/editquiz/:id" element={<EditQuiz />} />
                 <Route path="/detailquiz/:id" element={<DetailQuiz />} />
-                <Route path="/quizdetail/:id" element={<QuizDetail />} />
+                
               </Route>
 
               
@@ -43,6 +44,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </>
           </Routes>
+          <Footer />
         </QuizNameContextProvider>
       </UserContextProvider>
     </BrowserRouter>

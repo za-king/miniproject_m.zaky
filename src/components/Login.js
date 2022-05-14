@@ -1,39 +1,24 @@
 import React, {  useEffect,useContext } from "react";
 import UserContext from "../helper/UserContext";
-import { useNavigate } from "react-router-dom";
+
 import LoadingSpin from "react-loading-spin";
-import Cookies from "universal-cookie";
+
 import img2 from '../images/img2.jpg' 
 import { BsPeopleFill } from "react-icons/bs";
 
 
 
 function Login() {
-  const { data,loading , handleName,
+  const { 
+    data,
+    loading , 
+    handleName,
     handlePassword,
     handleSubmit } = useContext(UserContext);
-  const navigate = useNavigate();
-  const cookies = new Cookies();
+  
  
 
-  useEffect(() => {
-    if (
-      data?.miniproject_auth.length === 1 &&
-      data?.miniproject_auth[0].level === "user"
-    ) {
-      console.log(data?.miniproject_auth[0].level);
-      cookies.set("auth", true, { path: "/" });
-      return navigate("/dashboard"); 
-    }
-    if (
-      data?.miniproject_auth.length === 1 &&
-      data?.miniproject_auth[0].level === "admin"
-    ) {
-      console.log(data?.miniproject_auth[0].level);
-      cookies.set("auth2", true, { path: "/" });
-      return navigate("/admindashboard");
-    }
-  }, [data]);
+ 
 
  
 
@@ -101,12 +86,12 @@ function Login() {
               onChange={handlePassword}
             />
           </div>
-          {data && <div>gagal</div>}
+          {data && <div className="bg-red-500 h-[2rem] text-center mx-8 mt-2 rounded">gagal login</div>}
           <div className="text-center mt-1">
             <button
               type="submit"
               onClick={handleSubmit}
-              className=" w-[80%] inline-flex justify-center py-2 px-4 mt-4 border border-transparent shadow-sm text-sm font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className=" w-[80%] inline-flex justify-center py-2 px-4 mt-4 border border-transparent shadow-sm text-sm font-medium rounded text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-r from-cyan-600 to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Login
             </button>
