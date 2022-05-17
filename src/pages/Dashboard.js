@@ -9,10 +9,10 @@ import Avatars from "../images/Avatars.png";
 import { BsPenFill } from "react-icons/bs";
 
 function Dashboard() {
-  const { data, loading,user } = useContext(QuizNameContext);
+  const { data, loading } = useContext(QuizNameContext);
 
-  console.log(user)
- 
+  const nameUser = localStorage.getItem('name')
+  
   const navigate = useNavigate();
 
   const handleIkuti = (id) => {
@@ -39,19 +39,19 @@ function Dashboard() {
   }
   return (
     <>
-      <div className="min-h-screen max-h-full py-24 container right-0 inset-0">
-        <div className="w-full border-2 border-black h-full flex justify-center items-center rounded">
+      <div className="min-h-screen max-h-full py-24 container right-0 inset-0 mx-auto">
+        <div className="w-full border-4 border-black h-full flex justify-center items-center rounded">
           <div className="grid grid-cols-3 w-full h-full">
-            <div className=" w-full h-full border border-black flex flex-col justfy-center items-center ">
+            <div className=" w-full h-full border-r-4 border-black flex flex-col justfy-center items-center ">
               <div>
                 <img src={Avatars} alt="sd" width={200} />
               </div>
               <div>
-                <p></p>
+                <p className="font-bold text-xl">{nameUser}</p>
               </div>
             </div>
-            <div className="col-span-2 border-2 border-black rounded">
-              <div className="grid grid-cols-2 gap-[2rem] p-4">
+            <div className="col-span-2  rounded">
+              <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-[2rem] p-4">
                 {data?.miniproject_quizName.map((items, index) => {
                   return (
                     <div
@@ -70,12 +70,10 @@ function Dashboard() {
                               onClick={() => {
                                 handleIkuti(index);
                               }}
-                              className="bg-black w-20 h-8 rounded text-white flex justif-center items-center px-2 hover:bg-gradient-to-r from-cyan-500 to-blue-500"
+                              className="bg-black w-full h-8 rounded text-white text-center  px-2 mt-12 hover:bg-gray-500"
                             >
-                              ikuti{" "}
-                              <i>
-                                <BsPenFill className="mx-2" />
-                              </i>
+                              ikuti
+                              
                             </button>
                           </div>
                         </div>

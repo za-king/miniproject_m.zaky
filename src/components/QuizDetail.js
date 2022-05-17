@@ -57,7 +57,7 @@ function QuizDetail() {
           </div>
         </div>
       ) : (
-        <div className="container py-24  justify-center flex justify-items-center items-center">
+        <div className="container py-24 mx-auto  justify-center flex justify-items-center items-center">
           <div className="border rounded w-full  ">
           <div className="ml-4 font-bold text-lg ">
               {data?.miniproject_quizName[id].name}
@@ -83,7 +83,7 @@ function QuizDetail() {
               ].answerOptions.map((x, index) => {
                 return (
                   <button
-                    className="bg-black focus:bg-violet-700 rounded text-white hover:bg-neutral-700 hover:text-black w-[80%] h-12 mb-4 ml-4 pl-4 text-left"
+                    className="bg-black focus:bg-gray-500 rounded text-white hover:bg-gray-500 hover:text-black w-[80%] h-12 mb-4 ml-4 pl-4 text-left"
                     onClick={(e) => {
                       handleResult(x.isCorrect);
                     }}

@@ -17,8 +17,8 @@ function Navbar() {
     window.addEventListener("scroll", changeBackground)
   })
 
-  const ifActive = " hover:bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow hover:bg-opacity-50  w-screen h-[50px] fixed z-50 flex justify-between"
-  const ifScorll = " bg-gradient-to-r from-cyan-500 to-blue-500 w-screen h-[50px] fixed z-50 flex justify-between"
+  const ifActive = " hover:bg-white hover:shadow-lg    w-screen h-[50px] fixed z-50 flex justify-between"
+  const ifScorll = " bg-white shadow-lg w-screen h-[50px] fixed z-50 flex justify-between"
   
   return (
     <nav className={scroll ? ifScorll :ifActive}>
@@ -28,10 +28,10 @@ function Navbar() {
 
       <ul className="flex justify-items-center items-center pr-8">
         <li className="pr-4 ">
-        <Link to='/'><button className="hover:bg-white rounded-full w-14 h-8 font-bold">Home</button></Link></li>
+        <Link to='/'><button className="hover:bg-white  w-14 h-8 font-bold hover:border-b-4 hover:border-black">Home</button></Link></li>
 
         <li  className="pr-4">
-        <Link to='/login'><button className="hover:bg-white rounded-full w-14 h-8 font-bold">Login</button></Link>
+        <Link to='/login'><button className="hover:bg-white  w-14 h-8 font-bold hover:border-b-4 hover:border-black">Login</button></Link>
           
         </li>
       </ul>

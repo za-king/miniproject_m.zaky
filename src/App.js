@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./admin/AdminDashboard";
 import Result from "./components/Result";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import { UserContextProvider } from "./helper/UserContext";
 import { QuizNameContextProvider } from "./helper/QuizNameContext";
 import ProtectRouter from "./protectrouter/ProtectRouter";
@@ -31,16 +32,15 @@ function App() {
                 <Route path="result/:id" element={<Result />} />
               </Route>
 
-              <Route element={<AdminProtectRoute />} >
-              <Route path="/admindashboard" element={<AdminDashboard />} />
-              <Route path="/addquiz" element={<AddQuiz />} />
+              <Route element={<AdminProtectRoute />}>
+                <Route path="/admindashboard" element={<AdminDashboard />} />
+                <Route path="/addquiz" element={<AddQuiz />} />
                 <Route path="/editquiz/:id" element={<EditQuiz />} />
                 <Route path="/detailquiz/:id" element={<DetailQuiz />} />
-                
               </Route>
 
-              
               <Route index path="login" element={<Login />} />
+              <Route index path="register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
             </>
           </Routes>

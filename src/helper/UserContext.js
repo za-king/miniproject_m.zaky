@@ -55,6 +55,7 @@ export function UserContextProvider ({ children }) {
       ) {
         console.log(data?.miniproject_auth[0].name);
         cookies.set("auth", true, { path: "/" });
+        localStorage.setItem('name' ,data?.miniproject_auth[0].name)
         return navigate("/dashboard"); 
       }
       if (
