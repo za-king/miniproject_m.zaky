@@ -19,61 +19,13 @@ function AddQuiz() {
 
 
   const [quizName, setquizName] = useState("");
-  // const [soal, setSoal] = useState("");
-  
-  // const [Jawaban1, setJawaban1] = useState("");
-  // const [Jawaban2, setJawaban2] = useState("");
-  // const [Jawaban3, setJawaban3] = useState("");
-  // const [Jawaban4, setJawaban4] = useState("");
-  // const [trueAnswer, setTrueAnswer] = useState(false);
-  // const [trueAnswer1, setTrueAnswer1] = useState(false);
-  // const [trueAnswer2, setTrueAnswer2] = useState(false);
-  // const [trueAnswer3, setTrueAnswer3] = useState(false);
+
   const handleQuizName = (e) => {
     const value = e.target.value;
 
     setquizName(value);
   };
 
-  // const handleSoal = (e) => {
-  //   const value = e.target.value;
-
-  //   setSoal(value);
-  // };
-  // const handleJawaban1 = (e) => {
-  //  const name = e.target.name
-  //  const value = e.target.value
-  //  console.log(name)
-  //  console.log(value)
-  //   setJawaban1(e.target.value);
-  // };
-  // const handleJawaban2 = (e) => {
-  //   setJawaban2(e.target.value);
-  // };
-  // const handleJawaban3 = (e) => {
-  //   setJawaban3(e.target.value);
-  // };
-  // const handleJawaban4 = (e) => {
-  //   setJawaban4(e.target.value);
-  // };
-
-  // const handleChecked = (e) => {
-  //   let checked = e.target.checked
-  //   setTrueAnswer(checked);
-  //   console.log(checked)
-  // };
-  // const handleChecked1 = (e) => {
-  //   setTrueAnswer1(!trueAnswer1);
-  // };
-  // const handleChecked2 = (e) => {
-  //   setTrueAnswer2(!trueAnswer2);
-  // };
-  // const handleChecked3 = (e) => {
-  //   setTrueAnswer3(!trueAnswer3);
-  // };
-
- 
- 
   
   const navigate = useNavigate()
 
@@ -108,13 +60,9 @@ function AddQuiz() {
     }
     
   setBaseSoal(datas)
-    // console.log(baseSoal)
-    // console.log(json)
-    // console.log(data[index][event.target.name])
-    // console.log(event.target.value)
+    
   }
 
-  
 
   const addSoal = () =>{
     const newSoal = 
@@ -134,7 +82,6 @@ function AddQuiz() {
     setBaseSoal([...baseSoal,newSoal])
   }
 
-
   const handleSoalSubmit = () => {
  
     try {
@@ -149,20 +96,11 @@ function AddQuiz() {
     } catch (error) {
       console.log(error)
     }
-   
-    
-    
     }
 
-    // [{"questionText":  soal ,"answerOptions": {"data":
-    //       [{"answerText": Jawaban1 ,"isCorrect": trueAnswer  },
-    //       {"answerText":  Jawaban2 ,"isCorrect": trueAnswer1 },
-    //       {"answerText":  Jawaban3 ,"isCorrect": trueAnswer2 },
-    //       {"answerText":  Jawaban4 ,"isCorrect": trueAnswer3 }]}}
-    //      ] 
   
   return (
-    <div className=" container font-mono bg-white h-screen w-full pt-24">
+    <div className=" container font-mono bg-white min-h-screen max-h-full py-24">
       <div className=" border  bg-gray-100">
         <div className="mx-[20%]">
         <div>

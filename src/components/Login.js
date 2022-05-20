@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import UserContext from "../helper/UserContext";
 
 import LoadingSpin from "react-loading-spin";
-
+import { Link } from "react-router-dom";
 import img2 from "../images/img2.jpg";
 import { BsPeopleFill } from "react-icons/bs";
 
@@ -81,6 +81,7 @@ function Login() {
             >
               Login
             </button>
+            <Link to="/register"><p>Belum Punya Akun ?</p></Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import QuizNameContext from "../helper/QuizNameContext";
+import { gql, useMutation, useLazyQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import {Link} from 'react-router-dom'
+
 function Result() {
   const {
     data,
@@ -9,7 +11,7 @@ function Result() {
     currentQuestion,
     handleCurrentQuestion,
     handleResult,
-    result,
+    resultQuizUser,
   } = useContext(QuizNameContext);
 
   const { id } = useParams();
@@ -30,7 +32,7 @@ function Result() {
               </p>
             </div>
             <div className="py-4">
-              <p className="text-xl">Jumlah Benar :{result}</p>
+              <p className="text-xl">Jumlah Benar :{resultQuizUser}</p>
             </div>
 
             <div>

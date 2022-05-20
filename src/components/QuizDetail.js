@@ -1,25 +1,52 @@
 import React, { useContext, useState } from "react";
 import Swal from 'sweetalert2'
-
+import { gql, useMutation, useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import QuizNameContext from "../helper/QuizNameContext";
 import LoadingSpin from "react-loading-spin";
 import { useParams } from "react-router-dom";
+
+const ResultUser = gql`
+mutation MyMutation($object: miniproject_result_insert_input = {}) {
+  insert_miniproject_result_one(object: $object) {
+    resulttest
+    authref
+  }
+}
+
+`;
+
+
 function QuizDetail() {
+
+  const [InsertResult, { loading: loadingUpdate }] = useMutation(ResultUser);
   const {
     data,
     loading,
     currentQuestion,
     handleCurrentQuestion,
     handleResult,
-    result,
+    resultQuizUser,
   } = useContext(QuizNameContext);
+  
   console.log(data?.miniproject_quizName);
 
   const { id } = useParams();
-
-  console.log(id);
+  const userId = localStorage.getItem('id')
+  console.log(data?.miniproject_quizName[id].id);
   const navigate = useNavigate();
+
+  function Submit(){
+    InsertResult({
+      "variables": {
+        "object":{
+          "resulttest": resultQuizUser,
+          "authref": userId,
+          "quizref": data?.miniproject_quizName[id].id
+          
+        }
+      }})
+  }
 
   const handleFinish = () => {
     Swal.fire({
@@ -28,14 +55,15 @@ function QuizDetail() {
       cancelButtonText: 'batal',
       confirmButtonText: 'selesai',
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
+        Submit()
         return navigate(`/result/${id}`);
       } 
     })
     
   };
 
+  
 
  
 

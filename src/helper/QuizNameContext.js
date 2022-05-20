@@ -29,15 +29,15 @@ const QuizNameContext = createContext();
 export function QuizNameContextProvider({ children }) {
   const { data, loading, error } = useQuery(GetQuizName);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [result, setResult] = useState(0);
+  const [resultQuizUser, setResultQuizUser] = useState(0);
   const handleCurrentQuestion = () => {
     setCurrentQuestion(currentQuestion + 1);
   };
   const handleResult = (e) => {
     if (e === true) {
-      setResult(result + 1);
+      setResultQuizUser(resultQuizUser + 1);
     } else {
-      setResult(result);
+      setResultQuizUser(resultQuizUser);
     }
   };
 
@@ -48,7 +48,7 @@ export function QuizNameContextProvider({ children }) {
     currentQuestion,
     handleCurrentQuestion,
     handleResult,
-    result,
+    resultQuizUser,
     GetQuizName
   };
   return <QuizNameContext.Provider value={value}>{children}</QuizNameContext.Provider>;

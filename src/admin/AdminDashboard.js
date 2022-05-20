@@ -74,7 +74,7 @@ function AdminDashboard() {
       <div className="px-24">
         <div class="flex flex-col">
           <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="w-full justify-end flex p-4 flex-">
+            {/* <div className="w-full justify-end flex p-4 flex-">
               <button
                 className="bg-black w-24 h-8 rounded text-white flex justif-center items-center px-2 "
                 onClick={handleTambah}
@@ -83,7 +83,7 @@ function AdminDashboard() {
                 <i className="mx-2">
                   <BsPlusLg />
                 </i>
-              </button>
+              </button> */}
             </div>
 
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8 bg-gray-200">
@@ -130,11 +130,11 @@ function AdminDashboard() {
                                 }} className="bg-black rounded text-white w-24 h-8 mx-4">
                                 detail
                               </button>
-                              <button onClick={() => {
+                              {/* <button onClick={() => {
                                   handleEdit(index);
                                 }}   className="bg-black rounded text-white w-24 h-8 mx-4">
                                 edit
-                              </button>
+                              </button> */}
                               <button
                                 onClick={() => {
                                   handleDelete(items.id);
